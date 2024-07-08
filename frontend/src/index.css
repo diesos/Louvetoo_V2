@@ -1,10 +1,7 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
-
-
-  background-color: #FFEED9;
+  background-color: white;
 }
 
 
@@ -15,3 +12,21 @@ body{
   height: 100vh;
 }
 
+.child--outter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #cfcccc;
+  border-radius: 15px;
+  padding:15px 5px;
+}
+.child--outter > p{
+  margin: 3px 0px;
+}
+
+.child--outter > h3 {
+  margin: 10px 0px;
+  background-color: rgb(238, 250, 250);
+  width: 100%;;
+}

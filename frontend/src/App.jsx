@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './Component/Nav.jsx';
+import Footer from './Component/Footer.jsx';
 import Homepage from './Homepage.jsx';
 import Register from './Component/Register.jsx';
 import Login from './Component/Login.jsx';
@@ -30,6 +31,7 @@ function App() {
 
 
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

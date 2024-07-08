@@ -1,4 +1,6 @@
 const Enfant = require('../models/Enfant');
+const { Op } = require('sequelize');
+
 
 
 // GET all children
@@ -104,6 +106,24 @@ const deleteChild = async (req, res) => {
 	}
   }
 
+const getChildSuggestion = async (req, res) => {
+	const { prenom } = req.query;
+    if (!prenom) {
+        return res.status(400).json({ message: 'Prenom query parameter is required' });
+    }
+    try {
+        const children = await Enfant.findAll({
+            where: {
+                prenom: {
+                    [Op.like]: `%${prenom}%`
+                }
+            }
+        });
+        res.json(children);
+    } catch (error) {
+        console.error('Error searching for children:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
 
-
-module.exports = { getAllChildren, getChild, addChild, updateChild, deleteChild};
+module.exports = { getAllChildren, getChild, addChild, updateChild, deleteChild, getChildSuggestion}

@@ -1,18 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const { Op } = require('sequelize')
 const {
 	getAllChildren,
 	getChild,
 	addChild,
 	updateChild,
-	deleteChild} = require('../controllers/childrenController');
+	deleteChild,
+	getChildSuggestion} = require('../controllers/childrenController');
 
 // GET ROUTES for children
 // GET all children
 router.get('/getallchildren', getAllChildren);
 // GET a child
 router.get('/getchild/:id', getChild);
-
+// GET a Suggestion for a childre
+router.get('/search', getChildSuggestion);
 
 // POST ROUTES for children
 // POST a child
