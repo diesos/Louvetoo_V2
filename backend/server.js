@@ -7,6 +7,7 @@ const dashboardRoutes = require('./routes/dashboard');
 const childrenRoutes = require('./routes/childrenRoutes');
 const activiteRoutes = require('./routes/activiteRoutes');
 const usersRoutes = require('./routes/usersRoutes');
+const adminRoutes = require('./routes/admin');
 const db = require('./db.js');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
@@ -38,6 +39,7 @@ app.use(express.json());
 app.use("/api/children", childrenRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/activites", activiteRoutes);
+app.use("/api/admin", adminRoutes);
 
 initAuth();
 app.use(session({

@@ -1,9 +1,16 @@
-const Activite = require('../models/Activite');
+const { Activite, Enfant } = require('../models');
 
 
 const getAllActivites = async (req, res) => {
 	  try {
-	const activites = await Activite.findAll();
+	const activites = await Activite.findAll(
+		{
+			include: {
+			  model: Enfant, // Jointure avec le modèle Enfant
+			  attributes: ['prenom', 'nom'] // Inclure uniquement les champs nécessaires
+			}
+		  }
+	);
 	if (!activites) {
 	  return res.status(404).json({ error: "No activities found" });
 	}

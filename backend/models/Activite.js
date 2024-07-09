@@ -48,7 +48,9 @@ const Activite = sequelize.define('Activite', {
   timestamps: true,
 });
 
-Enfant.hasMany(Activite, { foreignKey: 'id_enfant' });
-Activite.belongsTo(Enfant, { foreignKey: 'id_enfant' });
+// Activite.associate = (models) => {
+//   Activite.belongsTo(models.Enfant, { foreignKey: 'id_enfant' });
+// }; -> J'ai basculé sur le fichier index.js
+
 
 module.exports = Activite;

@@ -1,4 +1,5 @@
 const Users = require('../models/Users');
+const Enfant = require('../models/Enfant');
 
 
 // GET all Userren
@@ -105,5 +106,7 @@ const deleteUser = async (req, res) => {
 	  res.status(500).json({ error: error.message });
 	}
   }
+
+
 
   module.exports = { getAllUsers, getUser, addUser, updateUser, deleteUser };

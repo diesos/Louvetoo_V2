@@ -1,6 +1,6 @@
 import AdminCards from "./AdminCards";
 import { Link } from 'react-router-dom';
-import { faUser, faChild, faGamepad} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faChild, faGamepad, faPeopleRoof} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Admindashboard() {
@@ -31,6 +31,12 @@ return (
 	title="Gérer les Activités"
 	detail="Ajouter, modifier ou supprimer une activité"
 	color='purple'
+	/></Link>
+	<Link to='/adminrelation'><AdminCards
+		icon={<FontAwesomeIcon icon={faPeopleRoof} style={{fontSize: '2em', color: 'white'}} />}
+	title="Gérer les Relations"
+	detail="Ajouter, modifier ou supprimer une activité"
+	color='green'
 	/></Link>
 	</>
 )}

@@ -9,6 +9,7 @@ import Admindashboard from './Component/Admindashboard.jsx';
 import AdminUsers from './pages/Admin/AdminUsers';
 import AdminChild from './pages/Admin/AdminChild';
 import AdminActivite from './pages/Admin/AdminActivite';
+import AdminRelation from './pages/Admin/AdminRelation';
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/adminusers" element={<AdminUsers />} />
           <Route path="/adminchild" element={<AdminChild />} />
           <Route path="/adminactivite" element={<AdminActivite />} />
+          <Route path="/adminrelation" element={<AdminRelation />} />
 
 
         </Routes>
