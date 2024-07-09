@@ -6,7 +6,7 @@ export default function UserCards(props) {
 
 
     return (
-        <div key={id} className='card' className="child--outter">
+        <div key={id} className='child--outter'>
             <FontAwesomeIcon icon={faUser} style={{ fontSize: '2em', color: 'white' }} />
             <h3>{prenom} {nom}</h3>
 			<p>id : {id}</p>
