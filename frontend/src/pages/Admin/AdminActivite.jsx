@@ -8,7 +8,7 @@ import { faPlus, faEdit, faTrashCan, faUsersViewfinder, faMagnifyingGlass } from
 const AdminActivite = () => {
     const [formData, setFormData] = useState({
         id: "",
-        activity: "",
+        activity: "entree",
         autres: "",
         id_enfant: "",
         firstname: "",
@@ -81,7 +81,7 @@ const AdminActivite = () => {
             });
             setFormData({
                 id: "",
-                activity: "",
+                activity: "entree",
                 autres: "",
                 id_enfant: "",
                 firstname: "",
@@ -106,7 +106,7 @@ const AdminActivite = () => {
             });
             setFormData({
                 id: "",
-                activity: "",
+                activity: "entree",
                 autres: "",
                 id_enfant: "",
                 firstname: "",
@@ -184,7 +184,17 @@ const AdminActivite = () => {
                     {successData.data && (
                         <>
                             <p>Résultat:</p>
-                            <pre>{JSON.stringify(successData.data, null, 2)}</pre>
+                            <ActivityCards
+                                            key={successData.data .id}
+                                            id={successData.data .id}
+                                            activity={successData.data .activity}
+                                            Enfant={successData.data .Enfant}
+                                            date={successData.data .date}
+                                            duree={successData.data .duree}
+                                            photo={successData.data .photo}
+                                            createdAt={successData.data .createdAt}
+                                            updatedAt={successData.data .updatedAt}
+                                        />
                             {console.log(successData.data)}
                         </>
                     )}
@@ -335,7 +345,7 @@ const AdminActivite = () => {
                     </button>
                     <button type="reset" onClick={() => setFormData({
                         id: "",
-                        activity: "",
+                        activity: "entree",
                         autres: "",
                         id_enfant: "",
                         firstname: "",

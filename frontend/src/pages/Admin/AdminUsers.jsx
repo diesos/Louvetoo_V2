@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios.js";
 import UserCards from "../../Component/UserCards.jsx";
@@ -27,6 +27,11 @@ const AdminUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [currentAction, setCurrentAction] = useState("add");
   const [suggestions, setSuggestions] = useState([]);
+  const [succesDelete, setSuccesDelete] = useState(null);
+
+  useEffect(() => {
+    fetchAllUsers();
+  }, []);
 
   const handleChange = async (e) => {
     const { name, value } = e.target;
@@ -41,7 +46,7 @@ const AdminUsers = () => {
         const response = await axios.get(
           `http://localhost:3000/api/users/search?prenom=${value}`
         );
-        setSuggestions(response.data);
+        setSuggestions(response.data.data);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
       }
@@ -62,7 +67,7 @@ const AdminUsers = () => {
       telephone: suggestion.telephone,
       role: suggestion.role,
     });
-    setSuggestions([]); // Cacher les suggestions après le clic
+    setSuggestions([]); // Hide suggestions after click
   };
 
   const handleSubmit = async (e) => {
@@ -119,7 +124,7 @@ const AdminUsers = () => {
       );
       console.log(response.data); // Log response data
       setSuccessData({
-        message: response.data.message,
+        message: response.data.message + " " + response.data.data.nom + " " + response.data.data.prenom + " avec succès ✅",
       });
       setFormData({
         id: "",
@@ -167,6 +172,24 @@ const AdminUsers = () => {
     } catch (error) {
       console.error("Error fetching user by ID:", error);
       setErrorMessage(error.response.data.error);
+    }
+  };
+
+  const handleUserSelection = (e) => {
+    const selectedUserId = e.target.value;
+    if (selectedUserId) {
+      const selectedUser = allUsers.find(user => user.id === parseInt(selectedUserId));
+      if (selectedUser) {
+        setFormData({
+          id: selectedUser.id,
+          firstname: selectedUser.prenom,
+          lastname: selectedUser.nom,
+          email: selectedUser.email,
+          password: selectedUser.password,
+          telephone: selectedUser.telephone,
+          role: selectedUser.role,
+        });
+      }
     }
   };
 
@@ -230,7 +253,7 @@ const AdminUsers = () => {
                 <UserCards
                     key={successData.data.id}
                     id={successData.data.id}
-                    renom={successData.data.prenom}
+                    prenom={successData.data.prenom}
                     nom={successData.data.nom}
                     email={successData.data.email}
                     telephone={successData.data.telephone}
@@ -280,7 +303,7 @@ const AdminUsers = () => {
                   <UserCards
                     key={user.id}
                     id={user.id}
-                    renom={user.prenom}
+                    prenom={user.prenom}
                     nom={user.nom}
                     email={user.email}
                     telephone={user.telephone}
@@ -306,13 +329,19 @@ const AdminUsers = () => {
             currentAction === "getById") && (
             <div>
               <label htmlFor="id">ID de l'Utilisateur: </label>
-              <input
-                type="text"
+              <select
                 id="id"
                 name="id"
                 value={formData.id}
-                onChange={handleChange}
-              />
+                onChange={handleUserSelection}
+              >
+                <option value="">Sélectionner un utilisateur</option>
+                {allUsers.map((user) => (
+                  <option key={user.id} value={user.id}>
+                    {user.id} - {user.prenom} {user.nom}
+                  </option>
+                ))}
+              </select>
             </div>
           )}
           {(currentAction === "add" ||

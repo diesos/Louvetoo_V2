@@ -7,11 +7,11 @@ const getAllUsers = async (req, res) => {
 	  try {
 	const User = await Users.findAll();
 	if (!User) {
-	  return res.status(404).json({ error: "No User found" });
+	  return res.status(404).json({ error: "Aucun utilisateur trouvé" });
 	}
 	res.status(200).send({
 		succes: true,
-		message: "All Users",
+		message: "Tous les utilisateurs trouvés",
 		totalUsers: User.length,
 		data: User
 	});
@@ -32,7 +32,7 @@ const getUser = async (req, res) => {
 	  }
 	  res.status(200).send({
 		succes: true,
-		message: "User found",
+		message: "Utilisateur trouvé",
 		data: User
 	  })
 	} catch (error) {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from '../../api/axios.js';
 import ChildCards from "../../Component/ChildCards.jsx";
@@ -20,6 +20,10 @@ const ChildForm = () => {
     const [allChildren, setAllChildren] = useState([]);
     const [currentAction, setCurrentAction] = useState('add');
     const [suggestions, setSuggestions] = useState([]);
+
+    useEffect(() => {
+        fetchAllChildren();
+    }, []);
 
     const handleChange = async (e) => {
         const { name, value } = e.target;
@@ -44,7 +48,7 @@ const ChildForm = () => {
 
     const handleSuggestionClick = (suggestion) => {
         setFormData({
-            ...formData, // Conserver les autres valeurs du formulaire
+            ...formData,
             id: suggestion.id,
             firstname: suggestion.prenom,
             lastname: suggestion.nom,
@@ -79,15 +83,7 @@ const ChildForm = () => {
                 message: response.data.message,
                 data: filteredData
             });
-            setFormData({
-                id: "",
-                firstname: "",
-                lastname: "",
-                birthdate: "",
-                allergy: "",
-                diet: ""
-            });
-            setCurrentAction('add');
+            resetForm();
             setErrorMessage(null);
         } catch (error) {
             console.error("Error submitting form:", error);
@@ -103,15 +99,7 @@ const ChildForm = () => {
             setSuccessData({
                 message: response.data.message
             });
-            setFormData({
-                id: "",
-                firstname: "",
-                lastname: "",
-                birthdate: "",
-                allergy: "",
-                diet: ""
-            });
-            setCurrentAction('add');
+            resetForm();
             setErrorMessage(null);
         } catch (error) {
             console.error("Error deleting child:", error);
@@ -125,7 +113,6 @@ const ChildForm = () => {
             console.log(response.data); // Log response data
             setAllChildren(response.data.data);
             setErrorMessage(null);
-            console.log(allChildren.length)
         } catch (error) {
             console.error("Error fetching all children:", error);
             setErrorMessage(error.message);
@@ -150,27 +137,41 @@ const ChildForm = () => {
         }
     };
 
+    const resetForm = () => {
+        setFormData({
+            id: "",
+            firstname: "",
+            lastname: "",
+            birthdate: "",
+            allergy: "",
+            diet: ""
+        });
+        setCurrentAction('add');
+    };
+
     return (
         <>
             <div style={{display: 'flex', justifyContent: 'center', gap: '10px'}}>
-
-                <button
-                 onClick={() => setCurrentAction('add')} >
+                <button onClick={() => setCurrentAction('add')}>
                     <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faPlus} />
-                    Ajouter un Enfant</button>
+                    Ajouter un Enfant
+                </button>
                 <button onClick={() => setCurrentAction('edit')}>
-                <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faEdit} />
-                    Éditer un Enfant</button>
+                    <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faEdit} />
+                    Éditer un Enfant
+                </button>
                 <button onClick={() => setCurrentAction('delete')}>
-                <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faTrashCan} />
-                Supprimer un Enfant</button>
+                    <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faTrashCan} />
+                    Supprimer un Enfant
+                </button>
                 <button onClick={() => setCurrentAction('getAll')}>
-                <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faUsersViewfinder} />
-                    Voir tous les Enfants</button>
+                    <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faUsersViewfinder} />
+                    Voir tous les Enfants
+                </button>
                 <button onClick={() => setCurrentAction('getById')}>
-                <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faMagnifyingGlass} />
-
-                    Rechercher un Enfant</button>
+                    <FontAwesomeIcon style={{margin:'0px 10px'}} icon={faMagnifyingGlass} />
+                    Rechercher un Enfant
+                </button>
             </div>
             <h1 style={{textAlign: 'center', margin: '15px'}}>
                 {currentAction === 'edit' ? "Modifier un Enfant" :
@@ -186,17 +187,15 @@ const ChildForm = () => {
                     {successData.data && (
                         <>
                             <p>Résultat:</p>
-                                <ChildCards
-                                    style={{maxWidth: '100px'}}
-                                    key={successData.data.id}
-                                    id= {successData.data.id}
-                                    prenom={successData.data.prenom}
-                                    nom={successData.data.nom}
-                                    date_naissance={successData.data.date_naissance}
-                                    allergie={successData.data.allergie? successData.data.allergie : "Aucune"}
-                                    diet={successData.data.diet? successData.data.diet : "Aucun"}
-                                />
-                            {console.log(successData.data)}
+                            <ChildCards
+                                key={successData.data.id}
+                                id={successData.data.id}
+                                prenom={successData.data.prenom}
+                                nom={successData.data.nom}
+                                date_naissance={successData.data.date_naissance}
+                                allergie={successData.data.allergie ? successData.data.allergie : "Aucune"}
+                                diet={successData.data.diet ? successData.data.diet : "Aucun"}
+                            />
                         </>
                     )}
                     <button onClick={() => setSuccessData(null)}>Fermer</button>
@@ -209,43 +208,48 @@ const ChildForm = () => {
                 </div>
             )}
 
-{currentAction === 'getAll' ? (
-            <div style={{ textAlign: 'center' }}>
-<button onClick={fetchAllChildren}>Voir tous les Enfants</button>
-<button onClick={() => setAllChildren([])} style={{margin:'10px'}}>Réinitialiser</button>
+            {currentAction === 'getAll' ? (
+                <div style={{ textAlign: 'center' }}>
+                    <button onClick={fetchAllChildren}>Voir tous les Enfants</button>
+                    <button onClick={() => setAllChildren([])} style={{margin:'10px'}}>Réinitialiser</button>
 
-                {allChildren.length > 0 && (
-                    <div>
-                        <h2 style={{margin: '15px'}}>Résultat total : {allChildren.length}</h2>
-                        <div style={{display:'flex', justifyContent:'center' ,flexWrap: 'wrap', gap:'30px'}}>
-                            {console.log(allChildren)}
-                            {allChildren.map((child) => (
-                                <ChildCards
-                                    key={child.id}
-                                    id= {child.id}
-                                    prenom={child.prenom}
-                                    nom={child.nom}
-                                    date_naissance={child.date_naissance}
-                                    allergie={child.allergie}
-                                    diet={child.diet}
-                                />
-                            ))}
+                    {allChildren.length > 0 && (
+                        <div>
+                            <h2 style={{margin: '15px'}}>Résultat total : {allChildren.length}</h2>
+                            <div style={{display:'flex', justifyContent:'center' ,flexWrap: 'wrap', gap:'30px'}}>
+                                {allChildren.map((child) => (
+                                    <ChildCards
+                                        key={child.id}
+                                        id={child.id}
+                                        prenom={child.prenom}
+                                        nom={child.nom}
+                                        date_naissance={child.date_naissance}
+                                        allergie={child.allergie}
+                                        diet={child.diet}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
-        ) : (
+                    )}
+                </div>
+            ) : (
                 <form onSubmit={currentAction === 'delete' ? handleDelete : currentAction === 'getById' ? fetchChildById : handleSubmit}>
                     {(currentAction === 'edit' || currentAction === 'delete' || currentAction === 'getById') && (
                         <div>
                             <label htmlFor="id">ID de l'Enfant: </label>
-                            <input
-                                type="text"
+                            <select
                                 id="id"
                                 name="id"
                                 value={formData.id}
                                 onChange={handleChange}
-                            />
+                            >
+                                <option value="">Sélectionner un enfant</option>
+                                {allChildren.map((child) => (
+                                    <option key={child.id} value={child.id}>
+                                        {child.id} - {child.prenom} {child.nom}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     )}
                     {(currentAction === 'add' || currentAction === 'edit' || currentAction === 'getById') && (
@@ -317,16 +321,8 @@ const ChildForm = () => {
                         currentAction === 'delete' ? "Supprimer un Enfant" :
                         currentAction === 'getById' ? "Rechercher un Enfant" : "Ajouter un Enfant"}
                     </button>
-                    <button type="reset" onClick={() => setFormData({
-                        id: "",
-                        firstname: "",
-                        lastname: "",
-                        birthdate: "",
-                        allergy: "",
-                        diet: ""
-                    })}>Réinitialiser
-                    </button>
-            </form>
+                    <button type="reset" onClick={resetForm}>Réinitialiser</button>
+                </form>
             )}
 
             <Link to='/admindashboard'>

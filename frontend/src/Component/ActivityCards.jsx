@@ -9,7 +9,8 @@ export default function ActivityCards(props) {
     return (
         <div key={id} className='child--outter'>
             <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: '2em', color: 'white' }} />
-            <h3>{prenom} {nom}</h3>
+            <h3 style={{textAlign:'center'}}>{prenom} {nom}</h3>
+            <p>ID Activité : {id}</p>
             <p>Activité : {activity}</p>
             <p>Date : {new Date(date).toLocaleDateString('fr-FR')}</p>
             <p>Durée : {duree} minutes</p>

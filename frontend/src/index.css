@@ -2,14 +2,18 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   background-color: white;
+  height: 100%;
 }
 
 
 body{
-  background-color: white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 100vh;
+  height: 100%
+}
+
+html {
+  height: 100%;
 }
 
 .child--outter{
@@ -21,6 +25,8 @@ body{
   border-radius: 15px;
   padding:15px 5px;
   max-width: fit-content;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
 }
 .child--outter > p{
   margin: 3px 0px;
