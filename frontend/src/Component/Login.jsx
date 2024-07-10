@@ -72,7 +72,7 @@ export default function Login() {
           <p className='login-text'>
           Vous n'avez pas encore de compte ?
           <Link to="/register">
-            <p>Inscrivez-vous ici</p>
+            <p style={{color:'red'}}>Inscrivez-vous ici</p>
           </Link>
         </p>
       </form>

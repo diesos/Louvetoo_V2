@@ -118,5 +118,36 @@ const deleteActivite = async (req, res) => {
 	  res.status(500).json({ error: error.message });
 	}
 }
+getActivitiesByChildId = async (req, res) => {
+	const { id_enfant } = req.params;
 
-module.exports = { getAllActivites, getActivite, addActivite, updateActivite, deleteActivite};
+	try {
+	  const activities = await Activite.findAll({
+		where: {
+		  id_enfant: id_enfant
+		},
+		include: [{ model: Enfant }] // Assuming you have associations set up
+	  });
+
+	  if (activities.length > 0) {
+		res.json({
+		  succes: true,
+		  message: `Activities for child ID: ${id_enfant}`,
+		  totalActivities: activities.length,
+		  data: activities
+		});
+	  } else {
+		res.json({
+		  succes: false,
+		  message: `No activities found for child ID: ${id_enfant}`
+		});
+	  }
+	} catch (error) {
+	  res.status(500).json({
+		succes: false,
+		message: 'An error occurred while fetching activities',
+		error: error.message
+	  });
+	}
+  };
+module.exports = { getAllActivites, getActivite, addActivite, updateActivite, deleteActivite, getActivitiesByChildId};

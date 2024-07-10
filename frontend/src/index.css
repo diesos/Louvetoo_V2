@@ -20,6 +20,7 @@ body{
   background-color: #cfcccc;
   border-radius: 15px;
   padding:15px 5px;
+  max-width: fit-content;
 }
 .child--outter > p{
   margin: 3px 0px;
@@ -29,4 +30,16 @@ body{
   margin: 10px 0px;
   background-color: rgb(238, 250, 250);
   width: 100%;;
+}
+
+.popup{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #cfcccc;
+  border-radius: 15px;
+  padding:15px 5px;
+  max-width: fit-content;
+  margin: auto;
 }

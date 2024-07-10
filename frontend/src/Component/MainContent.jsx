@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Cards from "./Cards";
+// import Cards from "./Cards";
+
 
 export default function MainContent() {
   let newDate = new Date();
@@ -58,16 +59,16 @@ export default function MainContent() {
       <div className="child--content">
         <div className="child--inner">
           <div className="profil-pic">
-            <img src="./ai.png" alt="profil picture" />
+            {/* <img src="./ai.png" alt="profil picture" /> */}
           </div>
           <div className="details">
-            <p>Bonjour Omer</p>
+            <p>Bonjour Admin</p>
             <p>Nous sommes le {getCurrentDate()}</p>
-            <p>Enfants : 14 (Recordman du nombre d'enfants)</p>
+            <p>Enfants présent en crèche : 7 </p>
           </div>
         </div>
       </div>
-      <label htmlFor="start">Start date:</label>
+      <label htmlFor="start">Choisir date:</label>
 
       <input
         type="date"
@@ -78,11 +79,14 @@ export default function MainContent() {
         min="2024-01-01"
         max="2026-12-31"
       />
+      {/* <Cards value="0" />
+      <Cards value="1" />
       <Cards value="2" />
-      <Cards value="2" />
-      <Cards value="0" />
-      <Cards value="4" />
-      <Cards value="4" />
+      <Cards value="3" />
+      <Cards value="4" /> */}
+      <Cards2 />
+      <Cards2 />
+      <Cards2 />
     </>
   );
 }

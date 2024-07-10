@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from '../../api/axios.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ActivityCards from "../../Component/ActivityCards.jsx";
 import { faPlus, faEdit, faTrashCan, faUsersViewfinder, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const AdminActivite = () => {
@@ -184,6 +185,7 @@ const AdminActivite = () => {
                         <>
                             <p>Résultat:</p>
                             <pre>{JSON.stringify(successData.data, null, 2)}</pre>
+                            {console.log(successData.data)}
                         </>
                     )}
                     <button onClick={() => setSuccessData(null)}>Fermer</button>
@@ -205,16 +207,18 @@ const AdminActivite = () => {
                             <h2 style={{ margin: '15px' }}>Résultat total : {allActivities.length}</h2>
                             <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '30px' }}>
                                 {allActivities.map((activity) => (
-                                    <div key={activity.id} style={{ border: "1px solid #000", padding: "10px", marginBottom: "10px" }}>
-                                        <p>ID: {activity.id}</p>
-                                        <p>Activité: {activity.activity}</p>
-                                        <p>Autres: {activity.autres}</p>
-                                        <p>ID Enfant: {activity.id_enfant}</p>
-                                        <p>Prénom Enfant: {activity.Enfant.prenom}</p>
-                                        <p>Nom Enfant: {activity.Enfant.nom}</p>
-                                        <p>Date: {new Date(activity.date).toLocaleDateString('fr-FR')}</p>
-                                        <p>Durée: {activity.duree} minutes</p>
-                                        <p>Photo: <a href={activity.photo} target="_blank" rel="noopener noreferrer">Voir la photo</a></p>
+                                    <div key={activity.id} style={{padding: "10px", marginBottom: "10px" }}>
+                                        <ActivityCards
+                                            key={activity.id}
+                                            id={activity.id}
+                                            activity={activity.activity}
+                                            Enfant={activity.Enfant}
+                                            date={activity.date}
+                                            duree={activity.duree}
+                                            photo={activity.photo}
+                                            createdAt={activity.createdAt}
+                                            updatedAt={activity.updatedAt}
+                                        />
                                     </div>
                                 ))}
                             </div>

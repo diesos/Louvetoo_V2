@@ -27,7 +27,7 @@ const getUser = async (req, res) => {
 	  if (!User) {
 		return res.status(404).json({
 			succes: false,
-			error: "User not found"
+			error: "Utilisateur non trouvé"
 			});
 	  }
 	  res.status(200).send({
@@ -38,7 +38,7 @@ const getUser = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({
 			succes: false,
-			message: "User not found",
+			message: "Utilisateur non trouvé",
 			error: error.message });
 	}
 };
@@ -56,7 +56,7 @@ const addUser = async (req, res) => {
 	  });
 	  res.status(201).send({
 		succes: true,
-		message: "User created",
+		message: "Utilisateur ajouté",
 		data: User
 	  });
 	} catch (error) {
@@ -70,7 +70,7 @@ const updateUser = async (req, res) => {
 	try {
 	  const User = await Users.findOne({ where: { id } });
 	  if (!User) {
-		return res.status(404).json({ error: "User not found" });
+		return res.status(404).json({ error: "Utilisateur non trouvé" });
 	  }
 	  User.prenom = prenom;
 	  User.nom = nom;
@@ -81,7 +81,7 @@ const updateUser = async (req, res) => {
 	  await User.save();
 	  res.status(200).send({
 		succes: true,
-		message: "User updated",
+		message: "Utilisateur mis à jour",
 		data: User
 	  });
 	} catch (error) {
@@ -94,12 +94,12 @@ const deleteUser = async (req, res) => {
 	try {
 	  const User = await Users.findOne({ where: { id } });
 	  if (!User) {
-		return res.status(404).json({ error: "User not found" });
+		return res.status(404).json({ error: "Utilisateur non trouvé" });
 	  }
 	  await User.destroy();
 	  res.status(200).send({
 		succes: true,
-		message: "User deleted",
+		message: "Utilisateur supprimé",
 		data: User
 	  });
 	} catch (error) {

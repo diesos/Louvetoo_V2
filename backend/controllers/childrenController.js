@@ -8,11 +8,11 @@ const getAllChildren = async (req, res) => {
 	  try {
 	const children = await Enfant.findAll();
 	if (!children) {
-	  return res.status(404).json({ error: "No children found" });
+	  return res.status(404).json({ error: "Aucun enfant ne correspond" });
 	}
 	res.status(200).send({
 		succes: true,
-		message: "All children",
+		message: "Tous les enfants trouvés",
 		totalChildren: children.length,
 		data: children
 	});
@@ -28,18 +28,18 @@ const getChild = async (req, res) => {
 	  if (!child) {
 		return res.status(404).json({
 			succes: false,
-			error: "Child not found"
+			error: "Enfant non trouvé"
 			});
 	  }
 	  res.status(200).send({
 		succes: true,
-		message: "Child found",
+		message: "Enfant trouvé",
 		data: child
 	  })
 	} catch (error) {
 		res.status(500).json({
 			succes: false,
-			message: "Child not found",
+			message: "Enfant non trouvé",
 			error: error.message });
 	}
 };
@@ -56,7 +56,7 @@ const addChild = async (req, res) => {
 	  });
 	  res.status(201).send({
 		succes: true,
-		message: "Child created",
+		message: "Enfant ajouté",
 		data: child
 	  });
 	} catch (error) {
@@ -70,7 +70,7 @@ const updateChild = async (req, res) => {
 	try {
 	  const child = await Enfant.findOne({ where: { id } });
 	  if (!child) {
-		return res.status(404).json({ error: "Child not found" });
+		return res.status(404).json({ error: "Aucun résultat" });
 	  }
 	  child.prenom = prenom;
 	  child.nom = nom;
@@ -80,7 +80,7 @@ const updateChild = async (req, res) => {
 	  await child.save();
 	  res.status(200).send({
 		succes: true,
-		message: "Child updated",
+		message: "Enfant mis à jour",
 		data: child
 	  });
 	} catch (error) {
@@ -93,12 +93,12 @@ const deleteChild = async (req, res) => {
 	try {
 	  const child = await Enfant.findOne({ where: { id } });
 	  if (!child) {
-		return res.status(404).json({ error: "Child not found" });
+		return res.status(404).json({ error: "Enfant non trouvé" });
 	  }
 	  await child.destroy();
 	  res.status(200).send({
 		succes: true,
-		message: "Child deleted",
+		message: "Enfant supprimé",
 		data: child
 	  });
 	} catch (error) {

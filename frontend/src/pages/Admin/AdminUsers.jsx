@@ -226,7 +226,16 @@ const AdminUsers = () => {
           {successData.data && (
             <>
               <p>Résultat:</p>
-              <pre>{JSON.stringify(successData.data, null, 2)}</pre>
+              <div>
+                <UserCards
+                    key={successData.data.id}
+                    id={successData.data.id}
+                    renom={successData.data.prenom}
+                    nom={successData.data.nom}
+                    email={successData.data.email}
+                    telephone={successData.data.telephone}
+                    role={successData.data.role}
+                  /></div>
             </>
           )}
           <button onClick={() => setSuccessData(null)}>Fermer</button>

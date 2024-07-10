@@ -6,7 +6,8 @@ const {
 	getUser,
 	addUser,
 	updateUser,
-	deleteUser} = require('../controllers/usersController');
+	deleteUser,
+	associateChild} = require('../controllers/usersController');
 
 // GET ROUTES for users
 // GET all users
@@ -22,5 +23,7 @@ router.put('/updateuser/:id', updateUser);
 // DELETE ROUTES for users
 // DELETE a user
 router.delete('/deleteuser/:id', deleteUser);
+
+
 
 module.exports = router;

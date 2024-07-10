@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import Logo from '/logo.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faHouse, faHandsHoldingChild } from '@fortawesome/free-solid-svg-icons';
+import Logo from '/logonavbar.svg';
 
 export default function Nav() {
     const location = useLocation();
@@ -12,13 +14,16 @@ export default function Nav() {
             {location.pathname === '/dashboard'&& (
                 <ul>
                     <li>
-                        <Link to="/dashboard">Home</Link>
+                        <Link to="/dashboard"><FontAwesomeIcon icon={faHouse} style={{color:'white', marginLeft:'10px'}}/>
+                        <p style={{color:'white'}}>Home</p></Link>
                     </li>
                     <li>
-                        <Link to="/child">Child</Link>
+                        <Link to="/child"><FontAwesomeIcon icon={faHandsHoldingChild} style={{color:'white', marginLeft:'25px'}} />
+                        <p style={{alignSelf:'center', marginLeft:'10px', color:'white'}}>Enfants</p></Link>
                     </li>
                     <li>
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/profile"><FontAwesomeIcon icon={faUser} style={{color: 'white', marginLeft:'20px'}} />
+                        <p style={{alignSelf:'center', marginLeft:'10px', color:'white'}}>Profil</p></Link>
                     </li>
                 </ul>
             )}

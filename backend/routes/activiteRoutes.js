@@ -3,6 +3,7 @@ const router = express.Router();
 const {
 	getAllActivites,
 	getActivite,
+	getActivitiesByChildId,
 	addActivite,
 	updateActivite,
 	deleteActivite } = require('../controllers/activiteController.js');
@@ -10,8 +11,11 @@ const {
 // GET ROUTES for activites
 // GET all activites
 router.get('/getallactivites', getAllActivites);
+// GET activites by Child ID
+router.get('/getallactivites/:id_enfant', getActivitiesByChildId);
 // GET an activite
 router.get('/getactivite/:id', getActivite);
+
 // POST ROUTES for activites
 // POST an activite
 router.post('/addactivite', addActivite);

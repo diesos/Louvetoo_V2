@@ -14,7 +14,7 @@ export default function ChildCards(props) {
     return (
         <div key={id} className="child--outter">
             <FontAwesomeIcon icon={faChild} style={{ fontSize: '2em', color: 'white' }} />
-            <h3>{prenom} {nom}</h3>
+            <h3 style={{textAlign:'center'}}>{prenom} {nom}</h3>
 			<p>id : {id}</p>
             <p>Âge : {age} </p>
             <p>Date de naissance : {formattedDate}</p>

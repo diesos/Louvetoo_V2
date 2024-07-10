@@ -186,7 +186,17 @@ const ChildForm = () => {
                     {successData.data && (
                         <>
                             <p>Résultat:</p>
-                            <pre>{JSON.stringify(successData.data, null, 2)}</pre>
+                                <ChildCards
+                                    style={{maxWidth: '100px'}}
+                                    key={successData.data.id}
+                                    id= {successData.data.id}
+                                    prenom={successData.data.prenom}
+                                    nom={successData.data.nom}
+                                    date_naissance={successData.data.date_naissance}
+                                    allergie={successData.data.allergie? successData.data.allergie : "Aucune"}
+                                    diet={successData.data.diet? successData.data.diet : "Aucun"}
+                                />
+                            {console.log(successData.data)}
                         </>
                     )}
                     <button onClick={() => setSuccessData(null)}>Fermer</button>

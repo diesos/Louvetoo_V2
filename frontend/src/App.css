@@ -91,26 +91,25 @@ li{
 
 .child--content{
   display: flex;
-  max-width: 720px;
-  margin: auto;
+
+  width: 80%;
   justify-content: center;
-  margin-top: 2em;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  max-width: 780px;
+  padding: 15px;
   background-color: #39A7FF;
-  width: auto;
   -webkit-box-shadow: 0px 2px 30px -18px rgba(0,0,0,0.36);
   -moz-box-shadow: 0px 2px 30px -18px rgba(0,0,0,0.36);
   box-shadow: 0px 2px 30px -18px rgba(0,0,0,0.36);
   border-radius : 15px;
   color: white;
-  gap: 15px;
-  padding: 30px;
 
 }
 .profil-pic{
-  width: 100px;
-  height: 100px;
-  overflow:scroll;
-  border-radius: 80px;
+
+  align-self: center;
   text-align: center;
 }
 
@@ -126,8 +125,15 @@ li{
   display: flex;
   justify-content: center;
   gap: 15px;
+  color: white
 }
 
+.child--inner > .details{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .child--inner > .details > p {
   color:white;
 }
@@ -163,25 +169,27 @@ input {
   width: 100%;
   gap: 15px
 }
-.--Change{
+.--change{
   background-color: rgb(115, 61, 57);
 }
 
-.--Lunch {
+.--repas {
   background-color: rgb(203, 203, 5);
 }
-.--Activity{
+.--loisir{
   background-color: plum;
 }
-.--Deposit{
+.--entree{
   background-color: green;
 }
-
-.--Withdraw{
+.--autre{
+  background-color: #aecde7;
+}
+.--sortie{
   background-color: red;
 }
-.--Sleep{
-  background-color: #39A7FF;
+.--dodo{
+  background-color: #5C7EE5;
 }
 
 .login--button{
@@ -368,8 +376,10 @@ li {
   cursor: pointer;
 }
 
-li:hover {
-  background-color: #f1f1f1;
+li:hover, li:hover > a {
+  background-color: #52a5e0;
+  cursor: pointer;
+
 }
 
 footer {
@@ -380,7 +390,105 @@ footer {
   color: white;
   height: 50px;
   bottom: 0;
-  width: 100%;
+  margin-top: 20px;
   position: fixed;
+  width: 100%;
 }
 
+
+.card {
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  -webkit-box-shadow: -1px 7px 15px -6px rgba(0,0,0,0.7);
+  box-shadow: -1px 7px 15px -6px rgba(0,0,0,0.7);
+  width: 80%;
+  max-width: 760px;
+  font-family: Arial, sans-serif;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  color: black;
+  margin-top: 10px;
+}
+
+.icon {
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-inner {
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml;base64,<base64-encoded-icon>'); /* Remplace par ton icône */
+  background-size: cover;
+  background-position: center;
+}
+
+.card-content {
+  margin-left: 10px;
+}
+
+.card-content h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.card-content p {
+  margin: 0;
+  color: gray;
+  font-size: 14px;
+}
+
+body {
+	background: linear-gradient(-90deg, #d2cdcc, #a0d9ed, #d2cdcc);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.activity--cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.child--info{
+  display: flex;
+  justify-content:center;
+  border-radius:8px;
+  background-color:rgb(255, 255, 255);
+  margin:15px;
+  max-width:760px;
+  width: 85%;
+}

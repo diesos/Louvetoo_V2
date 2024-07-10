@@ -17,7 +17,7 @@ export default function Cards(prop){
 			case "Lunch":
 				return "a déjeuner";
 			case "Change":
-				return "a été changé";
+				return "Changement de couche";
 			case "Activity":
 				return "a pratiqué une activité";
 			default:
