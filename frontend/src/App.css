@@ -147,7 +147,11 @@ input {
 .cards {
   display: flex;
   justify-content: flex-start;
-  max-width: 720px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+
+  }
+  max-width: 80%;
   margin: auto;
   background-color:grey;
   border-radius: 8px;
@@ -162,6 +166,7 @@ input {
 
 .cards--inner{
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   background-color: white;
   padding: 25px;
@@ -280,7 +285,7 @@ button[disabled] {
   text-align: center;
   font-size: 24px;
   font-weight: 800;
-  margin-top: 15px;
+  margin-top: 30px;
   color:#0072A3;
 }
 
@@ -389,11 +394,13 @@ footer {
   background-color: #39A7FF;
   color: white;
   height: 50px;
-  bottom: 0;
-  margin-top: 20px;
   position: fixed;
+  bottom: 0;
   width: 100%;
+  z-index: 1000; /* Ajuster selon vos besoins */
 }
+
+
 
 
 .card {

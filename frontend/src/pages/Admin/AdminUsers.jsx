@@ -419,8 +419,8 @@ const AdminUsers = () => {
                   onChange={handleChange}
                 >
                   <option value="parent">Parent</option>
-                  <option value="teacher">Enseignant</option>
-                  <option value="admin">Administrateur</option>
+                  <option value="grand parent">Grand-Parent</option>
+                  <option value="staff">Staff</option>
                 </select>
               </div>
             </>

@@ -6,10 +6,9 @@
 }
 
 
-body{
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 100%
+body {
+  padding-bottom: 70px; /* Ajuster selon la hauteur de votre footer + marge supplémentaire */
+  margin-bottom: 20px; /* Ajuster selon vos besoins */
 }
 
 html {

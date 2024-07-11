@@ -122,7 +122,7 @@ const Register = () => {
                             <label htmlFor="prenom">
                                 Prénom(s):
                                 {validPrenom ? (
-                                    <FontAwesomeIcon icon={faCheck} className="valid green"/>
+                                    <FontAwesomeIcon icon={faCheck} className="valid"/>
                                 ) : (
                                     <FontAwesomeIcon icon={faTimes} className="invalid" />
                                 )}
