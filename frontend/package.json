@@ -14,9 +14,11 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.2",
+    "bootstrap": "^5.3.3",
     "mysql2": "^3.10.1",
     "react": "^18.2.0",
     "react-background-video-player": "^1.1.8",
+    "react-bootstrap": "^2.10.4",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.24.0",
     "sequelize": "^6.37.3"
@@ -29,6 +31,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "tailwindcss": "^3.4.6",
     "vite": "^5.3.3"
   }
 }
