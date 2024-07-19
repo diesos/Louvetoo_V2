@@ -14,6 +14,7 @@ return (
 	marginTop: '15px'
 	}}>Bienvenu sur le panel Admin.
 	</p>
+	<div className="responsive-div">
 	<Link to='/adminchild'><AdminCards
 	icon={<FontAwesomeIcon icon={faChild} style={{fontSize: '2.2em', color: 'white'}} />}
 	title="Gérer les Enfants"
@@ -38,5 +39,6 @@ return (
 	detail="Ajouter, modifier ou supprimer une activité"
 	color='green'
 	/></Link>
+	</div>
 	</>
 )}

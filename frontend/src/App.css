@@ -143,6 +143,7 @@ input {
 .cards {
   display: flex;
   justify-content: flex-start;
+  width: 100%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
 
@@ -165,10 +166,9 @@ input {
   flex-direction: column;
   justify-content: flex-start;
   background-color: white;
-  padding: 25px;
+  padding: 2vh;
   border-radius: 8px;
-  width: 100%;
-  gap: 15px
+  gap: 2vw;
 }
 .--change{
   background-color: rgb(115, 61, 57);
@@ -505,4 +505,16 @@ select{
   width: 100%;
   text-align: center;
   font-weight: 800;
+}
+
+.responsive-div {
+  display: flex;
+  flex-wrap: nowrap; /* Valeur par défaut */
+}
+
+@media (max-width: 600px) { /* Exemple pour les écrans de 600px ou moins */
+  .responsive-div {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
