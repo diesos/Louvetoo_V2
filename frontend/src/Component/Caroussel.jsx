@@ -66,9 +66,10 @@ function Caroussel() {
       <div className="carousel-item active">
         <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
         <div className="carousel-caption">
-          <h3>{`${title}`}</h3>
+          <h3 className="font-bold">{`${title}`}</h3>
           <p>{`${text}`}</p>
-          <button className="join-button">Rejoignez-nous</button>
+          <button className="join-buttontransition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+">Rejoignez-nous</button>
         </div>
       </div>
       <button className="carousel-control prev" onClick={handlePrev}>❮</button>

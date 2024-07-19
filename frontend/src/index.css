@@ -1,19 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  background-color: white;
-  height: 100%;
+
+
 }
 
 
 body {
-  padding-bottom: 70px; /* Ajuster selon la hauteur de votre footer + marge supplémentaire */
-  margin-bottom: 20px; /* Ajuster selon vos besoins */
+	background: linear-gradient(-90deg, #d2cdcc, #a0d9ed, #d2cdcc);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: auto;
 }
 
 html {
-  height: 100%;
+  scroll-behavior: smooth;
+
 }
 
 .child--outter{

@@ -30,8 +30,8 @@ export default function Nav() {
             {(location.pathname === '/index' || location.pathname === '/about' || location.pathname === '/contact') && (
                 <ul>
                     <li>
-                        <Link to="/index"><FontAwesomeIcon icon={faHouse} style={{color:'white', marginLeft:'10px'}}/>
-                        <p style={{color:'white'}}>Home</p></Link>
+                        <Link to="/index"><FontAwesomeIcon icon={faHouse} style={{color:'white', marginLeft:'15px'}}/>
+                        <p style={{color:'white'}}>Accueil</p></Link>
                     </li>
                     <li>
                         <Link to="/about"><FontAwesomeIcon icon={faCircleQuestion} style={{color:'white', marginLeft:'2.5em'}} />
