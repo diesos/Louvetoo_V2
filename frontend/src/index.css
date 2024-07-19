@@ -18,6 +18,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  height: auto;
+  margin-bottom: 100px;
 
 }
 

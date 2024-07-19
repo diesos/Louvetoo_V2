@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import pic1 from "../assets/gallery/1.png";
 import pic2 from "../assets/gallery/2.png";
 import pic3 from "../assets/gallery/3.png";
 import './Caroussel.css'; // Assurez-vous d'importer le fichier CSS
+import { Link } from 'react-router-dom';
 
 const images = [pic1, pic2, pic3];
 
@@ -68,8 +69,10 @@ function Caroussel() {
         <div className="carousel-caption">
           <h3 className="font-bold">{`${title}`}</h3>
           <p>{`${text}`}</p>
+          <Link to='/Login'>
           <button className="join-buttontransition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
 ">Rejoignez-nous</button>
+</Link>
         </div>
       </div>
       <button className="carousel-control prev" onClick={handlePrev}>❮</button>
