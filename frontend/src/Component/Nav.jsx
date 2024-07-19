@@ -8,7 +8,7 @@ export default function Nav() {
 
     return (
         <nav>
-            <Link to="/">
+            <Link to="/index">
                 <img src={Logo} alt="Logo of Louvetoo" className='logoimg' />
             </Link>
             {location.pathname === '/dashboard'&& (

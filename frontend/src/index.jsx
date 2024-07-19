@@ -41,6 +41,7 @@ const IndexPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           marginTop: "30px",
+		  marginLeft:'15%'
         }}
       >
         <CollapseEl />
