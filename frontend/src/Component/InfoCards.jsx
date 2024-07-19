@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardHeader,
@@ -8,8 +7,8 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 import Pic from "../assets/Ozturk357.jpg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 function ProfileCard() {
   return (
@@ -22,19 +21,19 @@ function ProfileCard() {
           Omer Ozturk
         </Typography>
         <Typography color="blue-gray" className="font-medium" textGradient>
-          Software Engineer
+          Full stack Web Developper
         </Typography>
       </CardBody>
       <CardFooter className="flex justify-center gap-7 pt-2">
-		<Tooltip color="light" content="Github">
-		  <a
-			href="http://github.com/diesos"
-			target="_blank"
-			rel="noreferrer"
-			href="https://github.com/your-github-username/your-repo" target="_blank" rel="noopener noreferrer">
-			<FontAwesomeIcon icon={faGithub} size="2x" />
-		  </a>
-		</Tooltip>
+        <Tooltip color="light" content="Github">
+          <a
+            href="http://github.com/diesos"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faGithub} size="2x" />
+          </a>
+        </Tooltip>
       </CardFooter>
     </Card>
   );

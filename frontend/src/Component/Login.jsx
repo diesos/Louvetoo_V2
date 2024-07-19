@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import axios from '../api/axios';
-import { useNavigate } from 'react-router-dom';
-import logo from '/logo.svg';
-import { Link } from 'react-router-dom';
-import '../index.css';
+import React, { useEffect, useState } from "react";
+import axios from "../api/axios";
+import { useNavigate } from "react-router-dom";
+import logo from "/logo.svg";
+import { Link } from "react-router-dom";
+import "../index.css";
 
-const LOGIN_URL = '/login';
-const CHECK_SESSION_URL = '/check-session';
+const LOGIN_URL = "/login";
+const CHECK_SESSION_URL = "/check-session";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errMsg, setErrMsg] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -32,18 +32,22 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(LOGIN_URL, { email, password }, { withCredentials: true });
+      const response = await axios.post(
+        LOGIN_URL,
+        { email, password },
+        { withCredentials: true }
+      );
       if (response.status === 200) {
         console.log(response?.data);
-        navigate('/dashboard');
+        navigate("/dashboard");
       }
     } catch (err) {
       if (!err?.response) {
-        setErrMsg('No Server Response');
+        setErrMsg("No Server Response");
       } else if (err.response?.status === 401) {
-        setErrMsg('Invalid Credentials');
+        setErrMsg("Invalid Credentials");
       } else {
-        setErrMsg('Login Failed');
+        setErrMsg("Login Failed");
       }
     }
   };
@@ -53,7 +57,7 @@ export default function Login() {
       <img src={logo} alt="Logo" />
       <form onSubmit={handleSubmit}>
         {errMsg && <p className="errmsg">{errMsg}</p>}
-        <p className='login-text'>Adresse e-mail</p>
+        <p className="login-text">Adresse e-mail</p>
         <input
           type="text"
           className="login"
@@ -61,7 +65,7 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-         <p className='login-text'>Mot de passe</p>
+        <p className="login-text">Mot de passe</p>
         <input
           type="password"
           className="login"
@@ -69,16 +73,20 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-          <button type="submit">Connexion</button>
-          <p className='login-text'>
+        <button type="submit">Connexion</button>
+        <p className="login-text">
           Vous n'avez pas encore de compte ?
           <Link to="/register">
-            <p style={{color:'red'}}>Inscrivez-vous ici</p>
+            <p style={{ color: "red" }}>Inscrivez-vous ici</p>
           </Link>
         </p>
       </form>
       <footer>
-      <Link to="/Admindashboard"><p style={{textAlign: 'center', marginTop: '30px', color:'gray'}}>Admin Panel</p></Link>
+        <Link to="/Admindashboard">
+          <p style={{ textAlign: "center", marginTop: "30px", color: "gray" }}>
+            Admin Panel
+          </p>
+        </Link>
       </footer>
     </div>
   );

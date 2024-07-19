@@ -23,7 +23,7 @@ function App() {
       <div>
         <Nav /> {/* Composant Nav ajouté ici */}
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Index />} />
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

@@ -27,7 +27,7 @@ export default function Nav() {
                     </li>
                 </ul>
             )}
-            {(location.pathname === '/index' || location.pathname === '/about' || location.pathname === '/contact') && (
+            {(location.pathname === '/' || location.pathname === '/about' || location.pathname === '/contact' || location.pathname === '/index') && (
                 <ul>
                     <li>
                         <Link to="/index"><FontAwesomeIcon icon={faHouse} style={{color:'white', marginLeft:'15px'}}/>
