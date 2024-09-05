@@ -37,7 +37,11 @@ module.exports = {
 
       req.logIn(user, (err) => {
         if (err) return next(err);
-        const jwtToken = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+        const jwtToken = jwt.sign(
+          { id: user.id, email: user.email },
+          SECRET_KEY,
+          { expiresIn: '1h' } // Token expiration time
+        );
         res.status(200).json({ message: "Connexion avec succès", Token: jwtToken });
       });
     })(req, res, next);

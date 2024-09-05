@@ -1,36 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import logo from "/logo.svg";
 import { Link } from "react-router-dom";
 import "../index.css";
-import useSignIn from 'react-auth-kit/hooks/useSignIn';
+import useSignIn from "react-auth-kit/hooks/useSignIn";
 
 const LOGIN_URL = "http://127.0.0.1:3000/login";
-const CHECK_SESSION_URL = "/check-session";
-
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
-  const signIn = useSignIn()
-
-  // useEffect(() => {
-  //   const checkSession = async () => {
-  //     try {
-  //       const response = await axios.get(CHECK_SESSION_URL, { withCredentials: true });
-  //       if (response.data.loggedIn) {
-  //         navigate('/dashboard');
-  //       }
-  //     } catch (err) {
-  //       console.error('Failed to check session:', err);
-  //     }
-  //   };
-
-  //   checkSession();
-  // }, [navigate]);
+  const signIn = useSignIn();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,22 +24,24 @@ export default function Login() {
         { withCredentials: true }
       );
       if (response.status === 200) {
-        console.log(response?.data);
-        if(signIn({
+        const signInSuccess = signIn({
           auth: {
-              token: response.data.token,
-              type: 'Bearer'
-          }})){
-        navigate("/dashboard");
-          }
+            token: response.data.Token,
+            type: "Bearer",
+          },
+        });
+        console.log("SignIn Success:", signInSuccess);
+        if (signInSuccess) {
+          navigate("/dashboard");
+        }
       }
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("No Server Response");
+        setErrMsg("Pas de réponse du serveur");
       } else if (err.response?.status === 401) {
-        setErrMsg("Invalid Credentials");
+        setErrMsg("Mail / Mot de passe invalide");
       } else {
-        setErrMsg("Login Failed");
+        setErrMsg("Connexion échoué");
       }
     }
   };
@@ -86,7 +71,7 @@ export default function Login() {
         <p className="login-text">
           Vous n'avez pas encore de compte ?
           <Link to="/register">
-            <p style={{ color: "red" }}>Inscrivez-vous ici</p>
+            <span style={{ color: "red" }}>Inscrivez-vous ici</span>
           </Link>
         </p>
       </form>
