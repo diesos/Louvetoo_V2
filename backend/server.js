@@ -1,3 +1,4 @@
+require('dotenv').config({ path: "./.env" });
 const express = require('express');
 const sequelize = require('./db');
 const passport = require('passport');
@@ -14,13 +15,14 @@ const corsOptions = require('./config/corsOptions');
 const { init: initAuth } = require('./auth');
 const path = require('path');
 
+console.log('JWT Secret Key:', process.env.JWT_SECRET);
 // Models
 const User = require('./models/Users.js');
 const Enfant = require('./models/Enfant');
 const Activite = require('./models/Activite');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 app.use(cors({
   origin: corsOptions,

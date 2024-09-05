@@ -9,9 +9,9 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
-  root: 'Frontend', // Spécifie le répertoire contenant index.html
+  root: './', // Spécifie le répertoire contenant index.html
   build: {
-    outDir: 'Frontend/dist', // Répertoire de sortie pour les fichiers construits
+    outDir: './dist', // Répertoire de sortie pour les fichiers construits
     emptyOutDir: true, // Efface le répertoire de sortie avant de reconstruire
   },
   server: {
