@@ -13,6 +13,7 @@ import AdminActivite from './pages/Admin/AdminActivite';
 import AdminRelation from './pages/Admin/AdminRelation';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import ErrorPage from './pages/Error.jsx';
 import RequireAuth from '@auth-kit/react-router/RequireAuth'
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/index" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<ErrorPage />} />
 
 
         </Routes>
