@@ -1,10 +1,20 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useLocation, } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser,faCircleQuestion, faEnvelope, faHouse, faHandsHoldingChild } from '@fortawesome/free-solid-svg-icons';
+import { faUser,faCircleQuestion, faEnvelope, faHouse, faHandsHoldingChild, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 import Logo from '/logonavbar.svg';
+import useSignOut from 'react-auth-kit/hooks/useSignOut';
 
 export default function Nav() {
     const location = useLocation();
+    const signOut = useSignOut();
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        signOut()
+        setTimeout(() => {
+        navigate("/");
+        }, 1000);
+        }
 
     return (
         <nav>
@@ -24,7 +34,16 @@ export default function Nav() {
                     <li>
                         <Link to="/profile"><FontAwesomeIcon icon={faUser} style={{color: 'white', marginLeft:'20px'}} />
                         <p style={{alignSelf:'center', marginLeft:'10px', color:'white'}}>Profil</p></Link>
-                    </li>
+                        </li>
+                        <li style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap:'0.3vh' }}>
+                        <FontAwesomeIcon
+                            icon={faRightFromBracket}
+                            style={{ color: 'white', marginTop: '1vh' }} 
+                        />
+                        <p onClick={handleLogOut} style={{ color: 'white' }}>
+                            Déconnexion
+                        </p>
+                        </li>
                 </ul>
             )}
             {(location.pathname === '/' || location.pathname === '/about' || location.pathname === '/contact' || location.pathname === '/index') && (
