@@ -4,15 +4,18 @@ import { useNavigate } from "react-router-dom";
 import logo from "/logo.svg";
 import { Link } from "react-router-dom";
 import "../index.css";
+import useSignIn from 'react-auth-kit/hooks/useSignIn';
 
-const LOGIN_URL = "/login";
+const LOGIN_URL = "http://127.0.0.1:3000/login";
 const CHECK_SESSION_URL = "/check-session";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
+  const signIn = useSignIn()
 
   // useEffect(() => {
   //   const checkSession = async () => {
@@ -39,7 +42,13 @@ export default function Login() {
       );
       if (response.status === 200) {
         console.log(response?.data);
+        if(signIn({
+          auth: {
+              token: response.data.token,
+              type: 'Bearer'
+          }})){
         navigate("/dashboard");
+          }
       }
     } catch (err) {
       if (!err?.response) {

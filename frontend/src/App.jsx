@@ -13,7 +13,7 @@ import AdminActivite from './pages/Admin/AdminActivite';
 import AdminRelation from './pages/Admin/AdminRelation';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
-
+import RequireAuth from '@auth-kit/react-router/RequireAuth'
 
 
 
@@ -27,7 +27,14 @@ function App() {
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+
+          <Route path={'/dashboard'} element={
+      <RequireAuth fallbackPath={'/login'}>
+        <Dashboard/>
+          </RequireAuth>
+      }
+    />
+
           <Route path="/admindashboard" element={<Admindashboard />} />
           <Route path="/adminusers" element={<AdminUsers />} />
           <Route path="/adminchild" element={<AdminChild />} />
