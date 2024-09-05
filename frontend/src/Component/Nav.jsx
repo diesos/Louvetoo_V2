@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation, } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser,faCircleQuestion, faEnvelope, faHouse, faHandsHoldingChild, faRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import { faUser,faCircleQuestion, faEnvelope, faHouse, faHandsHoldingChild, faRightFromBracket, faRightToBracket} from '@fortawesome/free-solid-svg-icons';
 import Logo from '/logonavbar.svg';
 import useSignOut from 'react-auth-kit/hooks/useSignOut';
 
@@ -59,6 +59,11 @@ export default function Nav() {
                     <li>
                         <Link to="/contact"><FontAwesomeIcon icon={faEnvelope} style={{color: 'white', marginLeft:'30px'}} />
                         <p style={{alignSelf:'center', marginLeft:'10px', color:'white'}}>Contact</p></Link>
+                    </li>
+
+                    <li>
+                        <Link to="/login"><FontAwesomeIcon icon={faRightToBracket} style={{color: 'white', marginLeft:'30px'}} />
+                        <p style={{alignSelf:'center', marginLeft:'10px', color:'white'}}>Connexion</p></Link>
                     </li>
                 </ul>
             )}
