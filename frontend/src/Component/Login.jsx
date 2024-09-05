@@ -71,7 +71,10 @@ export default function Login() {
         <p className="login-text">
           Vous n'avez pas encore de compte ?
           <Link to="/register">
-            <span style={{ color: "red" }}>Inscrivez-vous ici</span>
+            <p style={{ color: "red", fontWeight: '700' }}>Inscrivez-vous</p>
+          </Link>
+          <Link to="#">
+            <p style={{ color: "gray", fontWeight: '700', opacity: '70%' }}>Mot de passe oublié ?</p>
           </Link>
         </p>
       </form>

@@ -25,7 +25,7 @@ export default function Nav() {
                 <ul>
                     <li>
                         <Link to="/dashboard"><FontAwesomeIcon icon={faHouse} style={{color:'white', marginLeft:'10px'}}/>
-                        <p style={{color:'white'}}>Home</p></Link>
+                        <p style={{color:'white'}}>Accueil</p></Link>
                     </li>
                     <li>
                         <Link to="/child"><FontAwesomeIcon icon={faHandsHoldingChild} style={{color:'white', marginLeft:'25px'}} />
@@ -66,6 +66,14 @@ export default function Nav() {
                         <p style={{alignSelf:'center', marginLeft:'10px', color:'white'}}>Connexion</p></Link>
                     </li>
                 </ul>
+            )}
+            {(location.pathname === '/login') && (
+                                <ul>
+                                <li>
+                                    <Link to="/index"><FontAwesomeIcon icon={faHouse} style={{color:'white', marginLeft:'15px'}}/>
+                                    <p style={{color:'white'}}>Accueil</p></Link>
+                                </li>
+                                </ul>
             )}
         </nav>
     );

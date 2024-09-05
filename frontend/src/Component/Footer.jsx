@@ -4,7 +4,7 @@ export default function Footer() {
     const location = useLocation();
     const path = location.pathname;
 
-    const isNotOnSpecificPaths = !(path === '/index' || path === '/about' || path === '/contact');
+    const isNotOnSpecificPaths = !(path === '/index' || path === '/about' || path === '/contact' || path === '/login');
 
 
     return (
