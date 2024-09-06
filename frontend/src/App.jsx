@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./Component/Nav.jsx";
 import Footer from "./Component/Footer.jsx";
-import Homepage from "./Homepage.jsx";
+// import Homepage from "./Homepage.jsx";
 import Index from "./index.jsx";
 import Register from "./Component/Register.jsx";
 import Login from "./Component/Login.jsx";
@@ -23,7 +23,7 @@ function App() {
         <Nav /> {/* Composant Nav ajouté ici */}
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/Homepage" element={<Homepage />} />
+          {/* <Route path="/Homepage" element={<Homepage />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route
