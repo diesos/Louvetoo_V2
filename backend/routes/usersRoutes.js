@@ -8,6 +8,12 @@ const {
 	updateUser,
 	deleteUser,
 	associateChild} = require('../controllers/usersController');
+const {verifyToken} = require('../middleware/verifyToken')
+const {verifyAdmin} = require('../middleware/verifyAdmin')
+const {
+	myInfo,
+	getUserAndChildren
+} = require('../controllers/me/userSelfController')
 
 // GET ROUTES for users
 // GET all users
@@ -24,6 +30,8 @@ router.put('/updateuser/:id', updateUser);
 // DELETE a user
 router.delete('/deleteuser/:id', deleteUser);
 
+router.get('/me', verifyToken, myInfo)
+router.get('/children-activities', verifyToken, getUserAndChildren)
 
 
 module.exports = router;
