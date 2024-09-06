@@ -7,13 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import { useEffect } from "react";
-import axios from "axios";
+import { fetchUserInfo } from "../services/userSelfServices";
+import { fetchUserChild } from "../services/userChildServices";
 
 export default function MainContent() {
   const token = useAuthHeader();
-  const config = {
-    headers: { Authorization: token },
-  };
 
   let newDate = new Date();
   let date = newDate.getDate();
@@ -24,20 +22,36 @@ export default function MainContent() {
   let day = newDate.getDay() - 1;
   // const token  = useSignIn();
   const [userInfo, setUserInfo] = useState(null);
+  const [userChild, setUserChild] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:3000/api/users/me", config)
-      .then((response) => {
-        setUserInfo(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching user info:", error);
-      });
-  }, []);
-
-  const {prenom, nom} = userInfo;
+    const fetchUser = async () => {
+      try {
+        const [usersData, usersChild] = await Promise.all([
+          fetchUserInfo(token),
+          fetchUserChild(token),
+        ]);
+        setUserInfo(usersData);
+        setUserChild(usersChild);
+      } catch (error) {
+        console.error("Error: Failed to fetch user data :", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (token) {
+      fetchUser();
+    }
+  }, [token]);
+  {
+    !loading &&
+      console.log(
+        userChild.children.length === 0
+          ? "Pas d'enfant"
+          : `L'enfant est: ${userChild.children}`
+      );
+  }
 
   // Array containing weeks
   const dayOfWeek = [
@@ -96,7 +110,13 @@ export default function MainContent() {
             {/* <img src="./ai.png" alt="profil picture" /> */}
           </div>
           <div className="details">
-            {userInfo ? <p>Bienvenue, {prenom} {nom}!</p> : <p>Bienvenue!</p>}
+            {!loading ? (
+              <p>
+                Bienvenue, {userInfo.prenom} {userInfo.nom}!
+              </p>
+            ) : (
+              <p>Bienvenue!</p>
+            )}
             <p>Nous sommes le {getCurrentDate()}</p>
             <p>Enfants présent en crèche : 7 </p>
           </div>
