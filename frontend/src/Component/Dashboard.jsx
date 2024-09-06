@@ -120,7 +120,7 @@ export default function MainContent() {
                 Pas d'enfant liée à votre compte
               </p>
               <p style={{ textAlign: "center", alignItems:'center'}}>
-                <a href="mailto:contact@admin.com">
+                <a href="#">
                   Veuillez contacter un staff
                 </a>
               </p>
