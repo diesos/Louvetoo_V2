@@ -1,9 +1,9 @@
 // ActivityList.js
-import { useEffect, useState } from 'react';
-import { getActivitiesByChildId } from '../services/activityServices';
-import Cards2 from './Cards2';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faChild} from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from "react";
+import { getActivitiesByChildId } from "../services/activityServices";
+import Cards2 from "./Cards2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChild } from "@fortawesome/free-solid-svg-icons";
 
 export default function ActivityList({ childId }) {
   const [activities, setActivities] = useState([]);
@@ -15,8 +15,9 @@ export default function ActivityList({ childId }) {
       try {
         const data = await getActivitiesByChildId(childId);
         setActivities(data.data);
+        console.log(data.data);
       } catch (error) {
-        setError('Error fetching activities');
+        setError("Error fetching activities");
       } finally {
         setLoading(false);
       }
@@ -32,12 +33,18 @@ export default function ActivityList({ childId }) {
   if (error) {
     return <p>{error}</p>;
   }
-console.log(activities)
+  console.log(activities);
   return (
-    <div className='activity--cards'>
-      <div className='child--info'>
-        <FontAwesomeIcon icon={faChild} style={{ fontSize: '2em', color: 'black', margin:'15px' }} />
-      <h2 style={{margin:'15px'}}>Enfant : {activities[0].Enfant.prenom +` `+ activities[0].Enfant.nom}</h2>
+    <div className="activity--cards">
+      <div className="child--info">
+        <FontAwesomeIcon
+          icon={faChild}
+          style={{ fontSize: "2em", color: "black", margin: "15px" }}
+        />
+        <h2 style={{ margin: "15px" }}>
+          Enfant :{" "}
+          {activities[0].Enfant.prenom + ` ` + activities[0].Enfant.nom}
+        </h2>
       </div>
       {activities.map((activity) => (
         <Cards2

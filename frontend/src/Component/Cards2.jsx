@@ -1,12 +1,17 @@
-import React, { act } from 'react';
+import React from "react";
 
 export default function Cards2(props) {
-  const { activity, createdAt, autres } = props;
+  const { activity, createdAt, autres, id } = props;
 
   const actionArray = selectActivity(activity);
   const date = new Date(createdAt);
-  const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  const formattedTime = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+  const formattedDate = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
+  const formattedTime = `${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`;
   function selectActivity(activity) {
     switch (activity) {
       case "entree":
@@ -28,8 +33,7 @@ export default function Cards2(props) {
     }
   }
 
-
-console.log(activity)
+  console.log(activity);
   return (
     <div className={`card --${activity}`}>
       <div className="card-header">

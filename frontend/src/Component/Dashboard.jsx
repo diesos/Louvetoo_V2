@@ -44,14 +44,6 @@ export default function MainContent() {
       fetchUser();
     }
   }, [token]);
-  {
-    !loading &&
-      console.log(
-        userChild.children.length === 0
-          ? "Pas d'enfant"
-          : `L'enfant est: ${userChild.children}`
-      );
-  }
 
   // Array containing weeks
   const dayOfWeek = [
@@ -96,8 +88,6 @@ export default function MainContent() {
       selectMonth[month - 1]
     } ${year} il est : ${hours}:${minutes}`;
 
-  const childId = 21;
-
   return (
     <>
       <div className="child--content">
@@ -122,7 +112,25 @@ export default function MainContent() {
           </div>
         </div>
       </div>
-      <ActivityList childId={childId} />
+      {!loading && (
+        <div>
+          {userChild.children.length === 0 ? (
+            <div style={{ backgroundColor: "#3333" }}>
+              <p style={{ textAlign: "center" }}>
+                Pas d'enfant liée à votre compte
+              </p>
+              <p style={{ textAlign: "center", alignItems:'center'}}>
+                <a href="mailto:contact@admin.com">
+                  Veuillez contacter un staff
+                </a>
+              </p>
+            </div>
+          ) : (
+           
+             <ActivityList childId={userChild.children[0].id} />
+          )}
+        </div>
+      )}
     </>
   );
 }
