@@ -116,7 +116,7 @@ npm run dev
 }
 ```
 
-•** POST** `/logout`: Log out the user.
+•**POST** `/logout`: Log out the user.
 
 ### User:
 
@@ -176,4 +176,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Dev blogspot :
 
-- i invite you to read my blog article about this project :[Link](https://dev.to/diesos/louvetoo-daycare-and-parent-bonding-made-easier-189c)
+I invite you to read my blog article about this project :[Link](https://dev.to/diesos/louvetoo-daycare-and-parent-bonding-made-easier-189c)
