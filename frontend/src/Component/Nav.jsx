@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Logo from "/logonavbar.svg";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
+import "../css/nav.css";
 
 export default function Nav() {
   const location = useLocation();
