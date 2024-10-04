@@ -1,6 +1,6 @@
 const User = require('../../models/Users');
-const Enfant = require('../../models/Enfant');
-const UserEnfant = require('../../models/UserEnfant');
+const Child = require('../../models/Child');
+const UserChild = require('../../models/UserChild');
 const Activite = require('../../models/Activite')
 const jwt = require('jsonwebtoken');
 
@@ -23,11 +23,11 @@ const getUserAndChildren = async (req, res) => {
     console.log('User ID:', userId);
 
     // Récupère les enfants associés à l'utilisateur
-    const children = await Enfant.findAll({
+    const children = await Child.findAll({
       include: {
         model: User,
         through: {
-          model: UserEnfant,
+          model: UserChild,
           attributes: [] // Ne retourne que les enfants
         },
         where: { id: userId }
@@ -37,7 +37,7 @@ const getUserAndChildren = async (req, res) => {
     console.log('Children:', children);
     res.json({
       user: userWithoutPassword,
-      children: children.length > 0 ? children : [] 
+      children: children.length > 0 ? children : []
     });
   } catch (error) {
     console.error('Error:', error);
