@@ -18,7 +18,7 @@ const path = require('path');
 console.log('JWT Secret Key:', process.env.JWT_SECRET);
 // Models
 const User = require('./models/Users.js');
-const Enfant = require('./models/Enfant');
+const Child = require('./models/Child');
 const Activite = require('./models/Activite');
 
 const app = express();
