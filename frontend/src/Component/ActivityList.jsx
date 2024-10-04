@@ -42,8 +42,7 @@ export default function ActivityList({ childId }) {
           style={{ fontSize: "2em", color: "black", margin: "15px" }}
         />
         <h2 style={{ margin: "15px" }}>
-          Enfant :{" "}
-          {activities[0].Enfant.prenom + ` ` + activities[0].Enfant.nom}
+          Enfant : {activities[0].Child.prenom + ` ` + activities[0].Child.nom}
         </h2>
       </div>
       {activities.map((activity) => (
