@@ -1,4 +1,4 @@
-const Enfant = require('../models/Enfant');
+const Child = require('../models/Child');
 const { Op } = require('sequelize');
 
 
@@ -6,7 +6,7 @@ const { Op } = require('sequelize');
 // GET all children
 const getAllChildren = async (req, res) => {
 	  try {
-	const children = await Enfant.findAll();
+	const children = await Child.findAll();
 	if (!children) {
 	  return res.status(404).json({ error: "Aucun enfant ne correspond" });
 	}
@@ -24,7 +24,7 @@ const getAllChildren = async (req, res) => {
 const getChild = async (req, res) => {
 	const { id } = req.params;
 	try {
-	  const child = await Enfant.findOne({ where: { id } });
+	  const child = await Child.findOne({ where: { id } });
 	  if (!child) {
 		return res.status(404).json({
 			succes: false,
@@ -47,7 +47,7 @@ const getChild = async (req, res) => {
 const addChild = async (req, res) => {
 	const { prenom, nom, date_naissance, allergie, diet} = req.body;
 	try {
-	  const child = await Enfant.create({
+	  const child = await Child.create({
 		prenom,
 		nom,
 		date_naissance,
@@ -68,7 +68,7 @@ const updateChild = async (req, res) => {
 	const { id } = req.params;
 	const { prenom, nom, date_naissance, allergie, diet } = req.body;
 	try {
-	  const child = await Enfant.findOne({ where: { id } });
+	  const child = await Child.findOne({ where: { id } });
 	  if (!child) {
 		return res.status(404).json({ error: "Aucun résultat" });
 	  }
@@ -91,7 +91,7 @@ const updateChild = async (req, res) => {
 const deleteChild = async (req, res) => {
 	const { id } = req.params;
 	try {
-	  const child = await Enfant.findOne({ where: { id } });
+	  const child = await Child.findOne({ where: { id } });
 	  if (!child) {
 		return res.status(404).json({ error: "Enfant non trouvé" });
 	  }
@@ -112,7 +112,7 @@ const getChildSuggestion = async (req, res) => {
         return res.status(400).json({ message: 'Prenom query parameter is required' });
     }
     try {
-        const children = await Enfant.findAll({
+        const children = await Child.findAll({
             where: {
                 prenom: {
                     [Op.like]: `%${prenom}%`
