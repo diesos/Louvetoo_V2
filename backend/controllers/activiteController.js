@@ -55,7 +55,7 @@ const getActivite = async (req, res) => {
 }
 
 const addActivite = async (req, res) => {
-  const { id, id_enfant, date, duree, photo, activity, autres } = req.body;
+  const { id, id_child, date, duree, photo, activity, autres } = req.body;
   try {
     const newActivite = await Activite.create({
       id,
@@ -70,7 +70,7 @@ const addActivite = async (req, res) => {
     const activite = await Activite.findOne({
       where: { id: newActivite.id },
       include: {
-        model: Enfant,
+        model: Child,
         attributes: ['prenom', 'nom']
       }
     });
@@ -87,12 +87,12 @@ const addActivite = async (req, res) => {
 
 const updateActivite = async (req, res) => {
   const { id } = req.params;
-  const { id_enfant, date, duree, photo, activity, autres } = req.body;
+  const { id_child, date, duree, photo, activity, autres } = req.body;
   try {
     const activite = await Activite.findOne({
       where: { id },
       include: {
-        model: Enfant,
+        model: Child,
         attributes: ['prenom', 'nom']
       }
     });
@@ -105,7 +105,7 @@ const updateActivite = async (req, res) => {
     }
 
     await activite.update({
-      id_enfant,
+      id_child,
       date,
       duree,
       photo,
@@ -129,7 +129,7 @@ const deleteActivite = async (req, res) => {
     const activite = await Activite.findOne({
       where: { id },
       include: {
-        model: Enfant,
+        model: Child,
         attributes: ['prenom', 'nom']
       }
     });
@@ -150,11 +150,11 @@ const deleteActivite = async (req, res) => {
 }
 
 const getActivitiesByChildId = async (req, res) => {
-  const { id_enfant } = req.params;
+  const { id_child } = req.params;
 
   try {
     const activities = await Activite.findAll({
-      where: { id_enfant },
+      where: { id_child },
       include: {
         model: Child,
         attributes: ['prenom', 'nom']
@@ -164,7 +164,7 @@ const getActivitiesByChildId = async (req, res) => {
     if (activities.length > 0) {
       res.json({
         succes: true,
-        message: `Activitée pour l'enfant avec ID : ${id_enfant}`,
+        message: `Activitée pour l'enfant avec ID : ${id_child}`,
         totalActivities: activities.length,
         data: activities
       });

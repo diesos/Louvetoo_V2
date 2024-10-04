@@ -3,7 +3,7 @@ const sequelize = require('../db'); // Assurez-vous que '../db' pointe vers votr
 const User = require('./Users'); // Assurez-vous que './Users' pointe vers le modèle User si nécessaire
 const Activite = require('./Activite')
 
-const Child = sequelize.define('Enfant', {
+const Child = sequelize.define('Child', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -39,9 +39,4 @@ const Child = sequelize.define('Enfant', {
     onUpdate: sequelize.literal('CURRENT_TIMESTAMP')
   }
 });
-
-// Enfant.associate = (models) => {
-//   Enfant.hasMany(models.Activite, { foreignKey: 'id_enfant' });
-// }; J'ai basculé sur le fichier index.js
-
 module.exports = Child;
