@@ -1,6 +1,6 @@
 const sequelize = require('./db');
 const User = require('./models/User');
-const Enfant = require('./models/Enfant');
+const Child = require('./models/Child');
 const Activite = require('./models/Activite');
 
 const syncDatabase = async () => {
