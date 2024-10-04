@@ -1,8 +1,8 @@
 const Users = require('../models/Users');
-const Enfant = require('../models/Enfant');
+const Child = require('../models/Child');
 
 
-// GET all Userren
+
 const getAllUsers = async (req, res) => {
 	  try {
 	const User = await Users.findAll();
@@ -19,7 +19,7 @@ const getAllUsers = async (req, res) => {
 	res.status(500).json({ error: error.message });
   }
 };
-// Find a User by id
+
 const getUser = async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -42,7 +42,7 @@ const getUser = async (req, res) => {
 			error: error.message });
 	}
 };
-// Add a User
+
 const addUser = async (req, res) => {
 	const { prenom, nom, email, password, telephone, role } = req.body;
 	try {

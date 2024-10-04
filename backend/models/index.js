@@ -1,4 +1,3 @@
-// models/index.js
 const sequelize = require('../db');
 const User = require('./Users');
 const Child = require('./Child');
@@ -20,7 +19,6 @@ Object.keys(models).forEach((modelName) => {
     }
 });
 
-// Définis les associations après avoir importé les modèles
 models.Child.hasMany(models.Activite, { foreignKey: 'id_child' });
 models.Activite.belongsTo(models.Child, { foreignKey: 'id_child' });
 

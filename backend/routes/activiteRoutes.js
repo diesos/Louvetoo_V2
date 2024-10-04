@@ -12,7 +12,7 @@ const {
 // GET all activites
 router.get('/getallactivites', getAllActivites);
 // GET activites by Child ID
-router.get('/getallactivites/:id_enfant', getActivitiesByChildId);
+router.get('/getallactivites/:id_child', getActivitiesByChildId);
 // GET an activite
 router.get('/getactivite/:id', getActivite);
 

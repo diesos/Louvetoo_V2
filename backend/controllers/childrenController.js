@@ -98,7 +98,7 @@ const deleteChild = async (req, res) => {
 	  await child.destroy();
 	  res.status(200).send({
 		succes: true,
-		message: "Enfant supprimé",
+		message: "Informations sur l'enfant supprimé",
 		data: child
 	  });
 	} catch (error) {
