@@ -10,7 +10,7 @@ const UserChild = sequelize.define('UserEnfant', {
       key: 'id',
     },
   },
-  enfantId: {
+  childId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     references: {

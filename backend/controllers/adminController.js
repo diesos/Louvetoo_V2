@@ -1,7 +1,7 @@
 const { User, Child, UserChild } = require('../models');
 
 const adminAssociateChild = async (req, res) => {
-  const { userId, enfantId } = req.body; /
+  const { userId, childId } = req.body; /
   try {
     // Vérifiez si l'utilisateur existe
     const utilisateur = await User.findByPk(userId);
@@ -10,7 +10,7 @@ const adminAssociateChild = async (req, res) => {
     }
 
     // Vérifiez si l'enfant existe
-    const enfant = await Child.findByPk(enfantId);
+    const enfant = await Child.findByPk(childId);
     if (!enfant) {
       return res.status(404).json({ error: "Enfant non trouvé" });
     }
@@ -19,7 +19,7 @@ const adminAssociateChild = async (req, res) => {
     const associationExistante = await UserChild.findOne({
       where: {
         userId: userId,
-        enfantId: enfantId
+        childId: childId
       }
     });
 
@@ -30,7 +30,7 @@ const adminAssociateChild = async (req, res) => {
     // Créez l'association entre l'utilisateur et l'enfant dans la table de jointure
     await UserChild.create({
       userId: userId,
-      enfantId: enfantId
+      childId: childId
     });
 
     res.status(200).json({
