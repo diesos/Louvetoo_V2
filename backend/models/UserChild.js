@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
 
-const UserEnfant = sequelize.define('UserEnfant', {
+const UserChild = sequelize.define('UserEnfant', {
   userId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     references: {
-      model: 'User', // Utilisez le nom du modèle Sequelize, pas le nom de la table SQL
+      model: 'User',
       key: 'id',
     },
   },
@@ -14,13 +14,13 @@ const UserEnfant = sequelize.define('UserEnfant', {
     type: DataTypes.INTEGER,
     primaryKey: true,
     references: {
-      model: 'Enfant', // Utilisez le nom du modèle Sequelize, pas le nom de la table SQL
+      model: 'Child',
       key: 'id',
     },
   },
 }, {
-  tableName: 'user_enfant',
+  tableName: 'user_child',
   timestamps: false,
 });
 
-module.exports = UserEnfant;
+module.exports = UserChild;

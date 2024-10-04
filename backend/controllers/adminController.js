@@ -1,7 +1,7 @@
-const { User, Enfant, UserEnfant } = require('../models');
+const { User, Child, UserChild } = require('../models');
 
 const adminAssociateChild = async (req, res) => {
-  const { userId, enfantId } = req.body; // Assurez-vous que les noms correspondent aux données envoyées depuis le front-end
+  const { userId, enfantId } = req.body; /
   try {
     // Vérifiez si l'utilisateur existe
     const utilisateur = await User.findByPk(userId);
@@ -10,13 +10,13 @@ const adminAssociateChild = async (req, res) => {
     }
 
     // Vérifiez si l'enfant existe
-    const enfant = await Enfant.findByPk(enfantId);
+    const enfant = await Child.findByPk(enfantId);
     if (!enfant) {
       return res.status(404).json({ error: "Enfant non trouvé" });
     }
 
     // Vérifiez si l'association entre l'utilisateur et l'enfant existe déjà
-    const associationExistante = await UserEnfant.findOne({
+    const associationExistante = await UserChild.findOne({
       where: {
         userId: userId,
         enfantId: enfantId
@@ -28,7 +28,7 @@ const adminAssociateChild = async (req, res) => {
     }
 
     // Créez l'association entre l'utilisateur et l'enfant dans la table de jointure
-    await UserEnfant.create({
+    await UserChild.create({
       userId: userId,
       enfantId: enfantId
     });

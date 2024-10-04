@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
-const Enfant = require('./Enfant');
+const Child = require('./Child');
 
 const Activite = sequelize.define('Activite', {
   id: {
@@ -26,7 +26,7 @@ const Activite = sequelize.define('Activite', {
   id_enfant: {
     type: DataTypes.INTEGER,
     references: {
-      model: Enfant,
+      model: Child,
       key: 'id'
     },
     onDelete: 'CASCADE',
@@ -49,7 +49,7 @@ const Activite = sequelize.define('Activite', {
 });
 
 // Activite.associate = (models) => {
-//   Activite.belongsTo(models.Enfant, { foreignKey: 'id_enfant' });
+//   Activite.belongsTo(models.Child, { foreignKey: 'id_enfant' });
 // }; -> J'ai basculé sur le fichier index.js
 
 
