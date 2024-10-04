@@ -1,15 +1,15 @@
 // models/index.js
 const sequelize = require('../db');
 const User = require('./Users');
-const Enfant = require('./Enfant');
+const Child = require('./Child');
 const Activite = require('./Activite');
-const UserEnfant = require('./UserEnfant');
+const UserChild = require('./UserChild');
 
 const models = {
     User,
-    Enfant,
+    Child,
     Activite,
-    UserEnfant,
+    UserChild,
 };
 
 
@@ -20,19 +20,19 @@ Object.keys(models).forEach((modelName) => {
     }
 });
 
-// Définir les associations après avoir importé les modèles
-models.Enfant.hasMany(models.Activite, { foreignKey: 'id_enfant' });
-models.Activite.belongsTo(models.Enfant, { foreignKey: 'id_enfant' });
+// Définis les associations après avoir importé les modèles
+models.Child.hasMany(models.Activite, { foreignKey: 'id_child' });
+models.Activite.belongsTo(models.Child, { foreignKey: 'id_child' });
 
-models.User.belongsToMany(models.Enfant, { through: models.UserEnfant, foreignKey: 'userId' });
-models.Enfant.belongsToMany(models.User, { through: models.UserEnfant, foreignKey: 'enfantId' });
+models.User.belongsToMany(models.Child, { through: models.UserChild, foreignKey: 'userId' });
+models.Child.belongsToMany(models.User, { through: models.UserChild, foreignKey: 'childId' });
 
 
 module.exports = {
     ...models,
     sequelize,
     User,
-    Enfant,
+    Child,
     Activite,
-    UserEnfant
+    UserChild
 };

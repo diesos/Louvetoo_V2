@@ -1,10 +1,10 @@
-const { Activite, Enfant } = require('../models');
+const { Activite, Child } = require('../models');
 
 const getAllActivites = async (req, res) => {
   try {
     const activites = await Activite.findAll({
       include: {
-        model: Enfant,
+        model: Child,
         attributes: ['prenom', 'nom']
       }
     });
@@ -29,7 +29,7 @@ const getActivite = async (req, res) => {
     const activite = await Activite.findOne({
       where: { id },
       include: {
-        model: Enfant,
+        model: Child,
         attributes: ['prenom', 'nom']
       }
     });
@@ -59,7 +59,7 @@ const addActivite = async (req, res) => {
   try {
     const newActivite = await Activite.create({
       id,
-      id_enfant,
+      id_child,
       date,
       duree,
       photo,
@@ -156,7 +156,7 @@ const getActivitiesByChildId = async (req, res) => {
     const activities = await Activite.findAll({
       where: { id_enfant },
       include: {
-        model: Enfant,
+        model: Child,
         attributes: ['prenom', 'nom']
       }
     });

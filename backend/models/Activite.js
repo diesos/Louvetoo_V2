@@ -23,7 +23,7 @@ const Activite = sequelize.define('Activite', {
       }
     }
   },
-  id_enfant: {
+  id_child: {
     type: DataTypes.INTEGER,
     references: {
       model: Child,
@@ -47,10 +47,5 @@ const Activite = sequelize.define('Activite', {
 }, {
   timestamps: true,
 });
-
-// Activite.associate = (models) => {
-//   Activite.belongsTo(models.Child, { foreignKey: 'id_enfant' });
-// }; -> J'ai basculé sur le fichier index.js
-
 
 module.exports = Activite;
