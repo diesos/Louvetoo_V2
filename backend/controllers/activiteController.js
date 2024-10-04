@@ -171,7 +171,7 @@ const getActivitiesByChildId = async (req, res) => {
     } else {
       res.json({
         succes: false,
-        message: `Pas d'Activitées trouvée pour l'enfant avec ID: ${id_enfant}`
+        message: `Pas d'Activitées trouvée pour l'enfant avec ID: ${id_child}`
       });
     }
   } catch (error) {

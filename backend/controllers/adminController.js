@@ -1,7 +1,7 @@
 const { User, Child, UserChild } = require('../models');
 
 const adminAssociateChild = async (req, res) => {
-  const { userId, childId } = req.body; /
+  const { userId, childId } = req.body;
   try {
     // Vérifiez si l'utilisateur existe
     const utilisateur = await User.findByPk(userId);
