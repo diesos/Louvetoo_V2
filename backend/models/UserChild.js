@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
+const User = require('./Users');
+const Child = require('./Child');
 
 const UserChild = sequelize.define('UserChild', {
   userId: {

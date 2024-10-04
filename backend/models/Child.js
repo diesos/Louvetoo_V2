@@ -1,13 +1,13 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db'); // Assurez-vous que '../db' pointe vers votre fichier de configuration Sequelize
-const User = require('./Users'); // Assurez-vous que './Users' pointe vers le modèle User si nécessaire
+const sequelize = require('../db');
+const User = require('./Users');
 const Activite = require('./Activite')
 
 const Child = sequelize.define('Child', {
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   prenom: {
     type: DataTypes.STRING,
@@ -38,5 +38,10 @@ const Child = sequelize.define('Child', {
     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
     onUpdate: sequelize.literal('CURRENT_TIMESTAMP')
   }
+
+}
+, {
+  tableName: 'Child'
 });
+
 module.exports = Child;

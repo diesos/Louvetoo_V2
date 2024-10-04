@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
-const Child = require('./Child');
 
 const Activite = sequelize.define('Activite', {
   id: {
@@ -14,11 +13,11 @@ const Activite = sequelize.define('Activite', {
   },
   autres: {
     type: DataTypes.STRING,
-    allowNull: true, // Peut être nul si l'activité n'est pas 'autre'
+    allowNull: true,
     validate: {
       checkAutres(value) {
         if (this.activity === 'autre' && !value) {
-          throw new Error('Le champ "autres" est requis lorsque l\'activité est "autre".');
+          throw new Error('Le champ "autres" est requis lorsque "autre" est choisi.');
         }
       }
     }
@@ -26,7 +25,7 @@ const Activite = sequelize.define('Activite', {
   id_child: {
     type: DataTypes.INTEGER,
     references: {
-      model: Child,
+      model: 'Child',
       key: 'id'
     },
     onDelete: 'CASCADE',

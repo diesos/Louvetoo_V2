@@ -1,7 +1,7 @@
 const sequelize = require('../db');
 const User = require('./Users');
-const Child = require('./Child');
 const Activite = require('./Activite');
+const Child = require('./Child');
 const UserChild = require('./UserChild');
 
 const models = {

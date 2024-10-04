@@ -9,7 +9,6 @@ const childrenRoutes = require('./routes/childrenRoutes');
 const activiteRoutes = require('./routes/activiteRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const adminRoutes = require('./routes/admin');
-const db = require('./db.js');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const { init: initAuth } = require('./auth');
@@ -17,6 +16,7 @@ const path = require('path');
 
 console.log('JWT Secret Key:', process.env.JWT_SECRET);
 // Models
+const models = require('./models')
 const User = require('./models/Users.js');
 const Child = require('./models/Child');
 const Activite = require('./models/Activite');
@@ -59,7 +59,7 @@ app.use('/', dashboardRoutes);
 const syncDatabase = async () => {
   try {
     // Synchroniser les tables sans les forcer à être recréées
-    await sequelize.sync({ force: false }); // or simply await sequelize.sync();
+    await sequelize.sync({ force: true }); // or simply await sequelize.sync();
     console.log('100% - ✅ Database synchronized');
   } catch (error) {
     console.error('Unable to synchronize the database:', error);

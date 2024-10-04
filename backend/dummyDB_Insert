@@ -1,0 +1,47 @@
+-- Password is : Test123! for all Users //
+INSERT INTO Users (prenom, nom, email, password, telephone, role, createdAt, updatedAt)
+VALUES
+('Admin', 'admin', 'a@a.a', '$2a$08$FZ.S0FqQIcPLFuHEThP08uWE6cspY8JldsP5U4hZLieOuvCUPkwGS', '0101010101', 'staff', NOW(), NOW()),
+('John', 'Doe', 'john.doe@example.com', '$2a$08$FZ.S0FqQIcPLFuHEThP08uWE6cspY8JldsP5U4hZLieOuvCUPkwGS', '0102030405', 'parent', NOW(), NOW()),
+('Jane', 'Doe', 'jane.doe@example.com', '$2a$08$FZ.S0FqQIcPLFuHEThP08uWE6cspY8JldsP5U4hZLieOuvCUPkwGS', '0102030406', 'parent', NOW(), NOW()),
+('Alice', 'Smith', 'alice.smith@example.com', '$2a$08$FZ.S0FqQIcPLFuHEThP08uWE6cspY8JldsP5U4hZLieOuvCUPkwGS', '0102030407', 'parent', NOW(), NOW()),
+('Bob', 'Johnson', 'bob.johnson@example.com', '$2a$08$FZ.S0FqQIcPLFuHEThP08uWE6cspY8JldsP5U4hZLieOuvCUPkwGS', '0102030408', 'parent', NOW(), NOW());
+
+INSERT INTO Child (prenom, nom, date_naissance, allergie, diet, createdAt, updatedAt)
+VALUES
+('Charlie', 'Doe', '2015-03-25', NULL, 'Vegan', NOW(), NOW()),
+('Sophie', 'Doe', '2017-06-15', 'Peanuts', NULL, NOW(), NOW()),
+('Lucas', 'Smith', '2016-09-10', NULL, 'Vegetarian', NOW(), NOW()),
+('Emma', 'Johnson', '2014-11-20', 'Gluten', NULL, NOW(), NOW());
+
+-- Assigner des activités à Charlie (id_child = 1)
+INSERT INTO Activites (activity, autres, id_child, date, duree, photo, createdAt, updatedAt)
+VALUES
+('entree', NULL, 1, '2024-10-04 08:30:00', 30, NULL, NOW(), NOW()),
+('repas', NULL, 1, '2024-10-04 12:00:00', 60, NULL, NOW(), NOW()),
+('dodo', NULL, 1, '2024-10-04 13:30:00', 90, NULL, NOW(), NOW()),
+('sortie', NULL, 1, '2024-10-04 16:30:00', 30, NULL, NOW(), NOW());
+
+-- Assigner des activités à Sophie (id_child = 2)
+INSERT INTO Activites (activity, autres, id_child, date, duree, photo, createdAt, updatedAt)
+VALUES
+('entree', NULL, 2, '2024-10-04 08:45:00', 30, NULL, NOW(), NOW()),
+('loisir', NULL, 2, '2024-10-04 10:00:00', 60, NULL, NOW(), NOW()),
+('repas', NULL, 2, '2024-10-04 12:15:00', 60, NULL, NOW(), NOW()),
+('dodo', NULL, 2, '2024-10-04 14:00:00', 90, NULL, NOW(), NOW());
+
+-- Assigner des activités à Lucas (id_child = 3)
+INSERT INTO Activites (activity, autres, id_child, date, duree, photo, createdAt, updatedAt)
+VALUES
+('entree', NULL, 3, '2024-10-04 08:15:00', 30, NULL, NOW(), NOW()),
+('change', NULL, 3, '2024-10-04 09:30:00', 15, NULL, NOW(), NOW()),
+('repas', NULL, 3, '2024-10-04 12:30:00', 60, NULL, NOW(), NOW()),
+('loisir', NULL, 3, '2024-10-04 15:00:00', 60, NULL, NOW(), NOW());
+
+-- Assigner des activités à Emma (id_child = 4)
+INSERT INTO Activites (activity, autres, id_child, date, duree, photo, createdAt, updatedAt)
+VALUES
+('entree', NULL, 4, '2024-10-04 09:00:00', 30, NULL, NOW(), NOW()),
+('autre', 'peinture', 4, '2024-10-04 11:00:00', 60, NULL, NOW(), NOW()),
+('repas', NULL, 4, '2024-10-04 12:45:00', 60, NULL, NOW(), NOW()),
+('sortie', NULL, 4, '2024-10-04 17:00:00', 30, NULL, NOW(), NOW());
