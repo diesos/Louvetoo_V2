@@ -59,7 +59,7 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link to="/profile">
+            <Link to="/profil">
               <FontAwesomeIcon
                 icon={faUser}
                 style={{ color: "white", marginLeft: "20px" }}

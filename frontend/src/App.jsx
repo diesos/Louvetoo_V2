@@ -6,6 +6,7 @@ import Index from "./index.jsx";
 import Register from "./Component/Register.jsx";
 import Login from "./Component/Login.jsx";
 import Dashboard from "./Component/Dashboard.jsx";
+import Profil from "./Component/Profil.jsx";
 import Admindashboard from "./Component/Admindashboard.jsx";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminChild from "./pages/Admin/AdminChild";
@@ -31,6 +32,14 @@ function App() {
             element={
               <RequireAuth fallbackPath={"/login"}>
                 <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path={"/profil"}
+            element={
+              <RequireAuth fallbackPath={"/login"}>
+                <Profil />
               </RequireAuth>
             }
           />
