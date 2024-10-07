@@ -56,3 +56,13 @@ html {
   max-width: fit-content;
   margin: auto;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+
+  }
+
+
+}

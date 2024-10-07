@@ -7,12 +7,17 @@ import feat2 from "./assets/feat2.png";
 import feat3 from "./assets/feat3.png";
 import ProfileCard from "./Component/InfoCards";
 import CollapseEl from "./Component/Collapse";
+import BlurIn from "@/components/ui/blur-in";
+
 // import { Button } from "@material-tailwind/react";
 
 const IndexPage = () => {
   return (
     <div className="container m-auto">
-      <h1 className="text-5xl text-center font-bold p-2">Louvetoo</h1>
+      <BlurIn
+        word="Louvetoo"
+        className="text-4xl font-bold text-black dark:text-white"
+      />
       <Caroussel />
       <div style={{ position: "relative" }}></div>
       <div className="flex justify-center gap-10 flex-wrap">
@@ -41,7 +46,7 @@ const IndexPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           marginTop: "30px",
-		  marginLeft:'15%'
+          marginLeft: "15%",
         }}
       >
         <CollapseEl />
@@ -50,7 +55,6 @@ const IndexPage = () => {
         style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
       >
         <ProfileCard />
-
       </div>
     </div>
   );

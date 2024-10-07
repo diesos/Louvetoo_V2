@@ -30,9 +30,9 @@ const AdminUsers = () => {
   const [succesDelete, setSuccesDelete] = useState(null);
 
   useEffect(() => {
-    fetchAllUsers();
+    setAllUsers(fetchAllUsers());
   }, []);
-
+  console.log(allUsers);
   const handleChange = async (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -124,7 +124,13 @@ const AdminUsers = () => {
       );
       console.log(response.data); // Log response data
       setSuccessData({
-        message: response.data.message + " " + response.data.data.nom + " " + response.data.data.prenom + " avec succès ✅",
+        message:
+          response.data.message +
+          " " +
+          response.data.data.nom +
+          " " +
+          response.data.data.prenom +
+          " avec succès ✅",
       });
       setFormData({
         id: "",
@@ -150,6 +156,7 @@ const AdminUsers = () => {
       );
       console.log(response.data); // Log response data
       setAllUsers(response.data.data);
+      console.log(allUsers);
       setErrorMessage(null);
     } catch (error) {
       console.error("Error fetching all users:", error);
@@ -178,7 +185,9 @@ const AdminUsers = () => {
   const handleUserSelection = (e) => {
     const selectedUserId = e.target.value;
     if (selectedUserId) {
-      const selectedUser = allUsers.find(user => user.id === parseInt(selectedUserId));
+      const selectedUser = allUsers.find(
+        (user) => user.id === parseInt(selectedUserId)
+      );
       if (selectedUser) {
         setFormData({
           id: selectedUser.id,
@@ -235,7 +244,6 @@ const AdminUsers = () => {
           : ""}
         {currentAction === "getAll" ? "Tous les Utilisateurs" : ""}
       </h1>
-
       {successData && (
         <div
           className="popup"
@@ -251,14 +259,15 @@ const AdminUsers = () => {
               <p>Résultat:</p>
               <div>
                 <UserCards
-                    key={successData.data.id}
-                    id={successData.data.id}
-                    prenom={successData.data.prenom}
-                    nom={successData.data.nom}
-                    email={successData.data.email}
-                    telephone={successData.data.telephone}
-                    role={successData.data.role}
-                  /></div>
+                  key={successData.data.id}
+                  id={successData.data.id}
+                  prenom={successData.data.prenom}
+                  nom={successData.data.nom}
+                  email={successData.data.email}
+                  telephone={successData.data.telephone}
+                  role={successData.data.role}
+                />
+              </div>
             </>
           )}
           <button onClick={() => setSuccessData(null)}>Fermer</button>
